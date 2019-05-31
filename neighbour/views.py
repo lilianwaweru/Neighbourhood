@@ -40,3 +40,15 @@ def view_profile(request):
         return redirect('Profile')
 
     return render(request,'view_profile.html',{'profile':prof})
+
+
+@login_required(login_url='/accounts/login/')
+def business(request):
+    current_user = request.user
+    
+    try:
+        busi = Business.objects.get(user=current_user)
+    except Exception as e:
+        return redirect('business')
+
+    return render(request,'view_business.html',{"businesses":businesses})
