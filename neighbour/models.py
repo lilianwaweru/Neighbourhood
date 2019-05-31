@@ -29,6 +29,7 @@ class Business(models.Model):
     business_email = models.CharField(max_length = 20)
     description = models.TextField(max_length=300,default=0)
     contact = models.CharField(max_length=12)
+    profile_picture = models.ImageField(upload_to = 'images/',blank=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
     def create_business(self):
