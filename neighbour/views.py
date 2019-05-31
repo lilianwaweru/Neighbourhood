@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
-from .models import Profile
+from .models import Profile,Business
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileForm
+from .forms import ProfileForm,BusinessForm
 
 # Create your views here.
 def welcome(request):
