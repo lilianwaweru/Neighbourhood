@@ -30,3 +30,13 @@ class Business(models.Model):
     description = models.TextField(max_length=300,default=0)
     contact = models.CharField(max_length=12)
     user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+
+    def create_business(self):
+        self.create()
+
+    def delete_business(self):
+        self.delete()    
+
+    def update_business(self,business):
+        self.business = business
+        self.update()    
