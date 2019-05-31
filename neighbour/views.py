@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from .models import Profile
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def welcome(request):
@@ -14,7 +17,7 @@ def index(request):
 def profile(request):
     logged_user = request.user
     if request.method == 'POST':
-        form = EditProfile(request.POST,request.FILES)
+        form = ProfileForm(request.POST,request.FILES)
         if form.is_valid():
             edit = form.save(commit=False)
             edit.user = logged_user
@@ -23,6 +26,6 @@ def profile(request):
 
     else:
 
-        form = EditProfile()
+        form = ProfileForm()
 
     return render(request,'profile.html',{'form':form})
