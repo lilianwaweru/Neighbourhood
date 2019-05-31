@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Profile
 from django.contrib.auth.decorators import login_required
-
+from .forms import ProfileForm
 
 # Create your views here.
 def welcome(request):
@@ -29,3 +29,14 @@ def profile(request):
         form = ProfileForm()
 
     return render(request,'profile.html',{'form':form})
+
+@login_required(login_url='/accounts/login/')
+def view_profile(request):
+    current_user = request.user
+    
+    try:
+        prof = Profile.objects.get(user=current_user)
+    except Exception as e:
+        return redirect('Profile')
+
+    return render(request,'view_profile.html',{'profile':prof})
