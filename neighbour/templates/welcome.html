@@ -2,7 +2,26 @@
 ​
 {% block content %}
 
-<h1>Welcome to neighbourhood</h1>
+<!-- Card -->
+<div class="card card-image" style="background-image: url(https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80);">
 
+    <!-- Content -->
+    <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+      <div>
+        <h5 class="pink-text"><i class="fas fa-chart-pie"></i> Neighbourhood</h5>
+        <h3 class="card-title pt-2"><strong>Click on the button bellow to choose your neighbourhooh</strong></h3>
+        
+        <a class="btn btn-pink" href="{%url 'neighbour_page' %}" class="float-right">Choose Neighbourhood</a>
+      </div>
+    </div>
+  
+  </div>
+  <!-- Card -->
+  {% for neighbour in neighbour %}
+  Name:<p>{{neighbour.name}}</p>
+  Location:<p>{{neighbour.location}}</p>
+  Occupants:<p>{{neighbour.occupants}}</p>
+  
+  {% endfor %}
 
 {% endblock%}

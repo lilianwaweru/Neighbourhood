@@ -1,4 +1,4 @@
-{% load bootstrap4 %} {% load staticfiles %}
+{% load bootstrap3 %} {% load staticfiles %}
 <!DOCTYPE html>
 <html>
 
@@ -13,21 +13,54 @@
 
 <body>
     <div class="container">
+        
         <div class="row">
-            <div class="col-md-4">
-                {% for business in businesses %}
-                <img id="business" height="250px" width="250px" src="{{business.business_image.url}}">
+           
+
+                <!-- <img id="business" height="250px" width="250px" src="{{business.business_image.url}}">
                 <p>{{business.business_name}}</p>
                 <p>{{business.business_email}}</p>
                 <p>{{business.description}}</p>
-                <p>{{business.contact}}</p>
+                <p>{{business.contact}}</p> -->
 
-                {% endfor %}
-            </div>
+
+
+                <div class="card">
+                <!-- <div class="col-md-4 ">
+                    <div class="card card-cascade wider flex-fill ">
+                        {% for business in businesses %}
+                        <h4 class="card-title">{{business.business_name}}</h4>
+                        <!-- Card image -->
+                        <!-- <div class="view view-cascade overlay">
+                            <img class="card-img-top" src="{{business.business_image.url}}" alt="Img">
+                        </div> -->
+                        <!--Card content-->
+                        <!-- <div class="card-body"> -->
+
+                            <!--Title-->
+
+                            <!--Text-->
+                            <!-- <b>Email:<p></b>{{business.business_email}}</p>
+                            <b>Description:<p></b>{{business.description}}</p>
+                            <b>Contact:<p></b>{{business.contact}}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                </div> -->
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-success">Header</div>
+                        <div class="card-body text-success">
+                          <h5 class="card-title">Success card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-success">Footer</div>
+                      </div>
         </div>
-    </div> 
+    </div>
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    {% bootstrap_javascript %} {% endblock %}   
+    {% bootstrap_javascript %} {% endblock %}
 </body>
+
 </html>

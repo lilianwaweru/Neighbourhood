@@ -1,4 +1,4 @@
-{% load bootstrap4 %} {% load staticfiles %}
+{% load bootstrap3 %} {% load staticfiles %}
 <!DOCTYPE html>
 <html>
 
@@ -22,11 +22,12 @@
                 <p>{{profile.contact}}</p>
                 {%endfor%}
                  
-                <!-- {{user}} 
+                
                 <p>{{profiles.contact}}</p>
                 {% for single_business in bizna%}
                 <p>{{single_business.business_name}}</p>
-                {% endfor%} -->
+                <p>{{single_business.business.business_image.url}}</p>
+                {% endfor%}
             </div>
 
             {% block scripts %}

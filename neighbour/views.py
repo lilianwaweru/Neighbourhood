@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Profile,Business,Post,Neighbourhood
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileForm,BusinessForm,PostForm
+from .forms import ProfileForm,BusinessForm,PostForm,NeighbourForm
 
 # Create your views here.
 
@@ -23,12 +23,12 @@ def neighbour(request):
     else:
 
         form = NeighbourForm()
-    return render(request,'neighbour.html',{"title":title}) 
+    return render(request,'neighbour.html',{"form":form}) 
 
 
 def welcome(request):
     neighbour = Neighbourhood.objects.all()
-    return render(request,'welcome.html')
+    return render(request,'welcome.html',{"neighbour":neighbour})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
