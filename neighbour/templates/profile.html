@@ -12,12 +12,13 @@
 <body>
     <div class="container">
       <div class="col-6 col-md-6">
-    <form  action="{%url 'Profile'%}" method="post" enctype="multipart/form-data">
+    <form  action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
         {%csrf_token%}
-    
-        {% bootstrap_form form%}
-        <input type="submit" class="btn btn-success btn-lg" value="Post">
-    </form> 
+
+        {% bootstrap_form form %}
+        <input type="hidden" name="{{user}}" value="{{user.id}}">
+        <input type="submit" class="btn btn-success btn-lg" value="Post Profile">
+    </form>
   </div>
 </div>
     {% block scripts %}

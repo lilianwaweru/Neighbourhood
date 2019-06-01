@@ -1,4 +1,4 @@
-% load bootstrap4 %} {% load staticfiles %}
+{% load bootstrap4 %} {% load staticfiles %}
 <!DOCTYPE html>
 <html>
 
@@ -7,39 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {% block styles %} {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'css/baseawards.css' %}"> {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/baseneighbour.css' %}"> {% endblock %}
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img id="profile" height="250px" width="250px" src="{{profile.profile_picture.url}}"
-                    style="border-radius:150px;">
-                <!-- <b>Bio:<p></b>{{profile.bio}}</p>
-        <b>Contact:<p></b>{{profile.contact}}</p> -->
-    </div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                        <ul class="list-group list-group-flush">
-                            <b>Bio</b>
-                            <li class="list-group-item">{{profile.bio}}</li>
-                            <b>Contact</b>
-                            <li class="list-group-item">{{profile.contact}}</li>
-                        </ul>
-                    </div>
-                </div>
-                </div>
+                
+                
+                {% for profile in profiles %}
+                <img src="profile.profile_picture.url">
+                <p>{{profile.bio}}</p>
+                <p>{{profile.contact}}</p>
+                {%endfor%}
+                 
+                <!-- {{user}} 
+                <p>{{profiles.contact}}</p>
+                {% for single_business in bizna%}
+                <p>{{single_business.business_name}}</p>
+                {% endfor%} -->
+            </div>
 
-               
-
-                {% endfor %}
-            
-    </div>
-
-    {% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    {% bootstrap_javascript %} {% endblock %}
+            {% block scripts %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            {% bootstrap_javascript %} {% endblock %}
 
 </body>
 

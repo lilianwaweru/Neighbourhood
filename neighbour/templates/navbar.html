@@ -8,11 +8,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
     <ul class="navbar-nav mr-auto"> 
       
-      <a class="navbar-brand" style="color:white" href="{% url 'Profile' %}">Profile</a>
+      <a class="navbar-brand" style="color:white" href="{% url 'profile' %}">Profile</a>
       <a class="navbar-brand" style="color:white" href="{% url 'view_profile' %}">View Profile</a>
       <a class="navbar-brand" style="color:white" href="{% url 'business' %}">Business</a>
-      
+      <a class="navbar-brand" style="color:white" href="{% url 'view_business' %}">view Business</a>
          
     
   </div>
+  <form class="form-inline my-2 my-lg-0">
+      
+      <a class="nav-link" style="color:white" href="/logout">Logout</a>
+    </form>
 </nav>

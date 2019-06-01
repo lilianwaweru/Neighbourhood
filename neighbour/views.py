@@ -16,13 +16,14 @@ def index(request):
 @login_required(login_url='/accounts/login/')
 def profile(request):
     logged_user = request.user
+    print(logged_user.id)
     if request.method == 'POST':
         form = ProfileForm(request.POST,request.FILES)
         if form.is_valid():
             edit = form.save(commit=False)
-            edit.user = logged_user
+            edit.user_prof = logged_user
             edit.save()
-        return redirect('welcome')
+        return redirect('view_profile')
 
     else:
 
@@ -33,24 +34,24 @@ def profile(request):
 @login_required(login_url='/accounts/login/')
 def view_profile(request):
     current_user = request.user
-    
-    try:
-        prof = Profile.objects.get(user=current_user)
-    except Exception as e:
-        return redirect('Profile')
+    print(current_user)
+    business = Business.objects.filter(user=current_user)
+    prof = Profile.objects.filter(user_prof=current_user)
+    print(prof[0])
 
-    return render(request,'view_profile.html',{'profile':prof})
+    # try:
+    #      prof = Profile.objects.filter(user_prof=current_user)
+    # except Exception as e:
+    #     pass
+    
+
+    return render(request,'view_profile.html',{'profiles':  prof,'bizna':business})
 
 
 @login_required(login_url='/accounts/login/')
 def view_business(request):
-    current_user = request.user
-    
-    try:
-        businesses = Business.objects.get(user=current_user)
-    except Exception as e:
-        return redirect('Business')
-    
+    businesses = Business.objects.all()
+
     return render(request,'view_business.html',{"businesses":businesses})
 
 
@@ -63,10 +64,10 @@ def business(request):
             edit = form.save(commit=False)
             edit.user = logged_user
             edit.save()
-        return redirect('welcome')
+        return redirect('view_business')
 
     else:
 
         form = BusinessForm()
 
-    return render(request,'business.html',{'form':form})    
+    return render(request,'business.html',{'form':form})

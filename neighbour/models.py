@@ -8,7 +8,7 @@ class Profile(models.Model):
     profile_picture = models.ImageField(upload_to = 'images/',blank=True)
     bio = models.CharField(max_length = 70)
     contact = models.CharField(max_length=12)
-    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    user_prof = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
     def save_profile(self):
         self.save()
@@ -21,23 +21,32 @@ class Profile(models.Model):
         self.save()
 
 
-    def __str__(self):
-        return f'{self.bio}'      
+    # def __str__(self):
+    #     return f'{Profile}'
 
 class Business(models.Model):
     business_name = models.CharField(max_length = 20)
     business_email = models.CharField(max_length = 20)
     description = models.TextField(max_length=300,default=0)
     contact = models.CharField(max_length=12)
-    profile_picture = models.ImageField(upload_to = 'images/',blank=True)
+    business_image = models.ImageField(upload_to = 'images/',blank=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
     def create_business(self):
         self.create()
 
     def delete_business(self):
-        self.delete()    
+        self.delete()
 
     def update_business(self,business):
         self.business = business
-        self.update()    
+        self.update()
+
+class Post(models.Model):
+    title = models.CharField(max_length = 70)
+    email = models.CharField(max_length = 20)
+    description = models.TextField(max_length=300,default=0)
+    contact = models.CharField(max_length = 12)
+     
+    
+    
