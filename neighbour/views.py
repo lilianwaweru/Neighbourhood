@@ -81,7 +81,7 @@ def create_post(request):
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
             edit = form.save(commit=False)
-            edit.user = logged_user
+            edit.post_user = logged_user
             edit.save()
         return redirect('welcome')
 
@@ -90,3 +90,11 @@ def create_post(request):
         form = PostForm()
 
     return render(request,'post.html',{'form':form})
+
+@login_required(login_url='/accounts/login/')
+def view_post(request):
+    current_user = request.user
+    
+    posts = Post.objects.filter(post_user=current_user)
+    
+    return render(request,'view_post.html',{'posts': posts})
