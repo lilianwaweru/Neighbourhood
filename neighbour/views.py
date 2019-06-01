@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
-from .models import Profile,Business
+from .models import Profile,Business,Post,Neighbourhood
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileForm,BusinessForm
+from .forms import ProfileForm,BusinessForm,PostForm
 
 # Create your views here.
 def welcome(request):
@@ -11,6 +11,10 @@ def welcome(request):
 def index(request):
     title = "Index Page"
     return render (request, 'index.html', {"title":title})
+
+def neighbour(request):
+    title = "neighbour Page"
+    return render(request,'neighbour.html',{"title":title})    
 
 
 @login_required(login_url='/accounts/login/')
@@ -76,14 +80,13 @@ def business(request):
 @login_required(login_url='/accounts/login/')
 def create_post(request):
     logged_user = request.user
-    print(logged_user.id)
     if request.method == 'POST':
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
-            edit = form.save(commit=False)
-            edit.post_user = logged_user
-            edit.save()
-        return redirect('welcome')
+            create = form.save(commit=False)
+            create.post_user = logged_user
+            create.save()
+        return redirect('view_post')
 
     else:
 

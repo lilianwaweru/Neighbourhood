@@ -10,7 +10,8 @@ urlpatterns=[
    url(r'^viewprofile/$',views.view_profile,name ='view_profile'),
    url(r'^view_business/$',views.view_business,name = 'view_business'),
    url(r'^business/$',views.business,name = 'business'),
-   url(r'^create_post/$',views.create_post,name = 'create_post')
+   url(r'^create_post/$',views.create_post,name = 'create_post'),
+   url(r'^view_post/$',views.view_post,name = 'view_post')
 ]   
 
 if settings.DEBUG:
