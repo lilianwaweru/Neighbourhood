@@ -71,3 +71,22 @@ def business(request):
         form = BusinessForm()
 
     return render(request,'business.html',{'form':form})
+
+
+@login_required(login_url='/accounts/login/')
+def create_post(request):
+    logged_user = request.user
+    print(logged_user.id)
+    if request.method == 'POST':
+        form = PostForm(request.POST,request.FILES)
+        if form.is_valid():
+            edit = form.save(commit=False)
+            edit.user = logged_user
+            edit.save()
+        return redirect('welcome')
+
+    else:
+
+        form = PostForm()
+
+    return render(request,'post.html',{'form':form})

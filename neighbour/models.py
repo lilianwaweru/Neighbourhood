@@ -47,6 +47,7 @@ class Post(models.Model):
     email = models.CharField(max_length = 20)
     description = models.TextField(max_length=300,default=0)
     contact = models.CharField(max_length = 12)
-     
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+
     
     
