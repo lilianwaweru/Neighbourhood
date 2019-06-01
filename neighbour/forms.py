@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile,Business,Post
+from .models import Profile,Business,Post,Neighbourhood
 
 class ProfileForm(forms.ModelForm):
     class Meta:
@@ -21,4 +21,4 @@ class PostForm(forms.ModelForm):
 class NeighbourForm(forms.ModelForm):
     class Meta:
         model = Neighbourhood
-        exclude = [""]        
+        exclude = ['neighbour_user']        

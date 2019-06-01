@@ -10,6 +10,21 @@ class Neighbourhood(models.Model):
     occupants = models.IntegerField(default=0)
     neighbour_user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
+    def save_Neighbourhood(self):
+        self.save()
+
+    def delete_Neighbourhood(self):
+        self.delete()
+
+    def update_Neighbourhood(self,location):
+        self.location = location
+        self.save()
+
+
+    def __str__(self):
+        return self.location
+
+
 
 
 class Profile(models.Model):
@@ -17,6 +32,8 @@ class Profile(models.Model):
     bio = models.CharField(max_length = 70)
     contact = models.CharField(max_length=12)
     user_prof = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE,null=True)
+
 
     def save_profile(self):
         self.save()
@@ -29,8 +46,8 @@ class Profile(models.Model):
         self.save()
 
 
-    # def __str__(self):
-    #     return f'{Profile}'
+    def __str__(self):
+        return f'{Profile}'
 
 class Business(models.Model):
     business_name = models.CharField(max_length = 20)
@@ -39,6 +56,8 @@ class Business(models.Model):
     contact = models.CharField(max_length=12)
     business_image = models.ImageField(upload_to = 'images/',blank=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE,null=True)
+
 
     def create_business(self):
         self.create()
@@ -56,6 +75,8 @@ class Post(models.Model):
     description = models.TextField(max_length=300,default=0)
     contact = models.CharField(max_length = 12)
     post_user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE,null=True)
+
 
     
     

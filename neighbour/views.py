@@ -4,9 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import ProfileForm,BusinessForm,PostForm
 
 # Create your views here.
-def welcome(request):
 
-    return render(request,'welcome.html')
 
 def index(request):
     title = "Index Page"
@@ -25,8 +23,12 @@ def neighbour(request):
     else:
 
         form = NeighbourForm()
-    return render(request,'neighbour.html',{"title":title})    
+    return render(request,'neighbour.html',{"title":title}) 
 
+
+def welcome(request):
+    neighbour = Neighbourhood.objects.all()
+    return render(request,'welcome.html')
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
