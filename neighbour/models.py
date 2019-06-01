@@ -7,8 +7,8 @@ from django.contrib.auth.models import User
 class Neighbourhood(models.Model):
     name = models.CharField(max_length = 20)
     location = models.CharField(max_length =20)
-    occupants = models.Integer(default=0)
-
+    occupants = models.IntegerField(default=0)
+    neighbour_user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
 
 

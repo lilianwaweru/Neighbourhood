@@ -17,3 +17,8 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         exclude = ['post_user']
+
+class NeighbourForm(forms.ModelForm):
+    class Meta:
+        model = Neighbourhood
+        exclude = [""]        

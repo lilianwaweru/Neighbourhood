@@ -13,7 +13,18 @@ def index(request):
     return render (request, 'index.html', {"title":title})
 
 def neighbour(request):
-    title = "neighbour Page"
+    logged_user = request.user
+    if request.method == 'POST':
+        form = NeighbourForm(request.POST,request.FILES)
+        if form.is_valid():
+            create = form.save(commit=False)
+            create.neighbour_user = logged_user
+            create.save()
+        return redirect('welcome')
+
+    else:
+
+        form = NeighbourForm()
     return render(request,'neighbour.html',{"title":title})    
 
 
