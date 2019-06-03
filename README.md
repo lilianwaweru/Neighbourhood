@@ -8,18 +8,18 @@ This a django web application that allows registered users to know about everyth
 
 ## Behaviour Driven Development(BDD)
 
-| Input                                                 | Output                                                                      |
-|-------------------------------------------------------|-----------------------------------------------------------------------------|
-| When you land on the page                             | You will have to first sign up then login                                  |
-| at the navbar there is an icon for creating a profile | create your own profile and post it and can view it in the view profile                                        |
-| there is a button for updloading uploading               | you can upload any project you want to                                        |
-| when you upload an the project,there is a review and project link button                             | you can review and rate the project according to its usability,content and design,you can also get to see the the project in the project link there   |
 
-
+| Input                                                                        | Output                                                                      |   |
+|------------------------------------------------------------------------------|-----------------------------------------------------------------------------|---|
+| When you land on the page                                                    | You will have to first register then login                                  |   |
+| at the navbar there is an icon for creating a profile                        | create your own profile and post you will see it on the view profile page   |   |
+| at the navbar there is an icon for business                                  | you can post any business you want and see it in the business view business |   |
+| at the index page,there is a button where you can choose your neighboourhood | when you fill it the form it will appear there below                        |   |
+| User clicks on the Logout                                                    | user is logged out                                                          |   |
 
 ### Project Setup instructions
 Use the following commands to use this project.
-- git clone `https://github.com/lilianwaweru/Awwards`
+- git clone `https://github.com/lilianwaweru/Neighbourhood`
 - install `python 3.6`
 - Install [Postgresql](https://www.postgresql.org/download/)
 - cd The_Gram
@@ -48,7 +48,7 @@ The different technologies that were used to develop this program include:
 7. Django Framework
 ```
 ### Link to live site
-Here is a link to the live site https://projoaward12.herokuapp.com/
+Here is a link to the live site 
 
 ### Contact Me
 contact me via email lilowesh.lw@gmail.com an slack at Lilian waweru
