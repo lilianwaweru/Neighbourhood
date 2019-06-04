@@ -48,7 +48,7 @@ The different technologies that were used to develop this program include:
 7. Django Framework
 ```
 ### Link to live site
-Here is a link to the live site 
+Here is a link to the live site https://neighbor13.herokuapp.com/
 
 ### Contact Me
 contact me via email lilowesh.lw@gmail.com an slack at Lilian waweru
