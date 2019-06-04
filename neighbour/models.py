@@ -8,6 +8,7 @@ class Neighbourhood(models.Model):
     name = models.CharField(max_length = 20)
     location = models.CharField(max_length =20)
     occupants = models.IntegerField(default=0)
+    image = models.ImageField(upload_to = 'images/',blank=True)
     neighbour_user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
     def save_Neighbourhood(self):
@@ -76,7 +77,3 @@ class Post(models.Model):
     contact = models.CharField(max_length = 12)
     post_user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE,null=True)
-
-
-    
-    
