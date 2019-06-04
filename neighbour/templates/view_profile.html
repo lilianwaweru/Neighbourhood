@@ -3,37 +3,60 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {% block styles %} {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'css/baseneighbour.css' %}"> {% endblock %}
+  {% block styles %} {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/baseneighbour.css' %}"> {% endblock %}
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">YOUR PROFILE</h1>
+        <p class="lead"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row">
             <div class="col-md-4">
-                
-                
-                {% for profile in profiles %}
-                <img src="profile.profile_picture.url">
-                <p>{{profile.bio}}</p>
-                <p>{{profile.contact}}</p>
-                {%endfor%}
-                 
-                
-                <p>{{profiles.contact}}</p>
-                {% for single_business in bizna%}
-                <p>{{single_business.business_name}}</p>
-                <p>{{single_business.business.business_image.url}}</p>
-                {% endfor%}
+              {% for profile in profiles %}
+                <img id="profile" height="250px" width="250px" src="{{profile.profile_picture.url}}"
+                    style="border-radius:150px;">
+
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <b>Bio</b>
+                        <li class="list-group-item">{{profile.bio}}</li>
+                        <b>Contact</b>
+                        <li class="list-group-item">{{profile.contact}}</li>
+                    </ul>
+                      {%endfor%}
+                </div>
             </div>
 
-            {% block scripts %}
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            {% bootstrap_javascript %} {% endblock %}
 
-</body>
+        <!-- {% for profile in profiles %}
+        <img src="{{profile.profile_picture.url}}">
+        <p>{{profile.bio}}</p>
+        <p>{{profile.contact}}</p>
+        {%endfor%}  -->
 
-</html>
+
+
+        {% for business in bizna %}
+        <p>{{business.business_name}}</p>
+        <p>{{business.business.business_image.url}}</p>
+        {% endfor%}
+      </div>
+
+      {% block scripts %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      {% bootstrap_javascript %} {% endblock %}
+
+    </body>
+
+    </html>

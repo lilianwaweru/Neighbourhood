@@ -1,29 +1,71 @@
-{% block content %}
-<!-- Card -->
-<div class="card">
+{% load bootstrap3 %} {% load staticfiles %}
+<!DOCTYPE html>
+<html>
 
-    <!-- Card image -->
-    <div class="view overlay">
-        <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
-            alt="Card image cap">
-        <a href="#!">
-            <div class="mask rgba-white-slight"></div>
-        </a>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% block styles %} {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/baseneighbour.css' %}"> {% endblock %}
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">BUSINESS</h1>
+        <p class="lead"></p>
+      </div>
     </div>
+    <div class="row">
+      <div class="row">
+        <div class="col-md-4">
 
-    <!-- Card content -->
-    <div class="card-body">
+          {% for business in businesses %}
+          <div class="col-md-4" style="margin-top:10px;">
+            <!-- Card -->
+            <div class="card">
 
-        <!-- Title -->
-        <h4 class="card-title">Card title</h4>
-        <!-- Text -->
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        <!-- Button -->
-        <a href="#" class="btn btn-primary">Button</a>
+              <!-- Card image -->
+              <div class="view overlay">
+                <img class="card-img-top" src="{{business.business_image.url}}"
+                alt="Card image cap">
+                <a href="#!">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
 
-    </div>
+              <!-- Card content -->
+              <div class="card-body">
 
-</div>
-<!-- Card -->
-{% endblock %}
+                <!-- Title -->
+                <h4 class="card-title">Name:<p class="Test">{{business.business_name}}</p></h4>
+                <!-- Text -->
+                <p class="card-text"><b>Location</b>: {{business.location}} </p>
+                <!-- Button -->
+                <p class="card-text"><b>business_email</b>:{{business.business_email}}</p>
+                <p class="card-text"><b>description</b>:{{business.description}}</p>
+                <p class="card-text"><b>contact</b>:{{business.contact}}</p>
+              </div>
+
+            </div>
+            <!-- Card -->
+          </div>
+
+          {% endfor %}
+
+
+
+
+
+
+
+
+          {% block scripts %}
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          {% bootstrap_javascript %} {% endblock %}
+
+        </body>
+
+        </html>

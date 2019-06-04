@@ -23,7 +23,7 @@ def neighbour(request):
     else:
 
         form = NeighbourForm()
-    return render(request,'neighbour.html',{"form":form}) 
+    return render(request,'neighbour.html',{"form":form})
 
 
 def welcome(request):
@@ -33,7 +33,7 @@ def welcome(request):
 @login_required(login_url='/accounts/login/')
 def profile(request):
     logged_user = request.user
-    print(logged_user.id)
+
     if request.method == 'POST':
         form = ProfileForm(request.POST,request.FILES)
         if form.is_valid():
@@ -53,14 +53,14 @@ def view_profile(request):
     current_user = request.user
     print(current_user)
     business = Business.objects.filter(user=current_user)
-    prof = Profile.objects.filter(user_prof=current_user)
-    print(prof[0])
+    prof = Profile.objects.filter(user_prof=current_user)[0:1]
+
 
     # try:
     #      prof = Profile.objects.filter(user_prof=current_user)
     # except Exception as e:
     #     pass
-    
+
 
     return render(request,'view_profile.html',{'profiles':  prof,'bizna':business})
 
@@ -110,7 +110,7 @@ def create_post(request):
 @login_required(login_url='/accounts/login/')
 def view_post(request):
     current_user = request.user
-    
+
     posts = Post.objects.filter(post_user=current_user)
-    
+
     return render(request,'view_post.html',{'posts': posts})
